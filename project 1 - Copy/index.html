@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip & Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="start-screen screen-panel" id="startScreen" aria-labelledby="startTitle">
+      <p class="eyebrow">A focus ritual</p>
+      <div class="start-mark" aria-hidden="true">✦</div>
+      <h1 id="startTitle">Find the <em>pair.</em></h1>
+      <p class="screen-copy">A small game for a sharper mind.</p>
+      <button class="primary-button" id="playButton" type="button">Play <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="difficulty-screen screen-panel" id="difficultyScreen" aria-labelledby="difficultyTitle" hidden>
+      <button class="quit-button difficulty-quit-button" id="difficultyQuitButton" type="button">Quit</button>
+      <p class="eyebrow">Choose your rhythm</p>
+      <h2 id="difficultyTitle">Pick a <em>difficulty.</em></h2>
+      <div class="difficulty-options">
+        <button class="difficulty-button" type="button" data-difficulty="superEasy">
+          <span><strong>Super easy</strong><small>4 pairs</small></span><span aria-hidden="true">00</span>
+        </button>
+        <button class="difficulty-button" type="button" data-difficulty="easy">
+          <span><strong>Easy</strong><small>8 pairs</small></span><span aria-hidden="true">01</span>
+        </button>
+        <button class="difficulty-button" type="button" data-difficulty="normal">
+          <span><strong>Normal</strong><small>20 pairs</small></span><span aria-hidden="true">02</span>
+        </button>
+        <button class="difficulty-button" type="button" data-difficulty="hard">
+          <span><strong>Hard</strong><small>40 pairs</small></span><span aria-hidden="true">03</span>
+        </button>
+      </div>
+      <section class="leaderboard" aria-labelledby="leaderboardTitle">
+        <div class="leaderboard-heading">
+          <h3 id="leaderboardTitle">Leaderboard</h3>
+          <span>Your best by difficulty</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th scope="col">Difficulty</th><th scope="col">Best time</th><th scope="col">Moves</th></tr>
+          </thead>
+          <tbody id="leaderboardRows"></tbody>
+        </table>
+      </section>
+      <button class="text-button" id="backButton" type="button">← Back</button>
+    </section>
+
+    <section class="game-screen" id="gameScreen" hidden>
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">A focus ritual</p>
+        <h1>Flip <span>&</span> Match</h1>
+      </div>
+      <div class="header-actions">
+        <button class="new-game-button" id="newGameButton" type="button">
+          <span class="button-icon" aria-hidden="true">↻</span>
+          New game
+        </button>
+        <button class="quit-button" id="quitButton" type="button">Quit</button>
+      </div>
+    </header>
+
+    <section class="game-intro" aria-labelledby="game-title">
+      <div>
+        <p class="round-label">Memory / 01</p>
+        <h2 id="game-title">Find the <em>pairs.</em></h2>
+      </div>
+      <p class="intro-copy">Clear your mind. Open two cards.<br>Let the pattern reveal itself.</p>
+    </section>
+
+    <section class="stats" aria-label="Game statistics">
+      <div class="stat-item">
+        <span class="stat-label">Time</span>
+        <strong id="timer">00:00</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Moves</span>
+        <strong id="moves">00</strong>
+      </div>
+      <div class="stat-item best-stat">
+        <span class="stat-label">Best</span>
+        <strong id="bestScore">--:--</strong>
+      </div>
+    </section>
+
+    <section class="board-wrap" aria-label="Memory card board">
+      <div class="board" id="board"></div>
+    </section>
+
+    <footer class="footer-note">
+      <span class="footer-mark" aria-hidden="true">✦</span>
+      <span>Stay curious. Trust your memory.</span>
+      <span class="footer-mark" aria-hidden="true">✦</span>
+    </footer>
+    </section>
+  </main>
+
+  <dialog class="win-dialog" id="winDialog" aria-labelledby="winTitle">
+    <div class="confetti confetti-one"></div>
+    <div class="confetti confetti-two"></div>
+    <p class="eyebrow">Pattern complete</p>
+    <h2 id="winTitle">Perfectly <em>matched.</em></h2>
+    <p class="result-copy">You found every pair in <strong id="resultMoves">00</strong> moves and <strong id="resultTime">00:00</strong>.</p>
+    <button class="play-again-button" id="playAgainButton" type="button">Play again <span aria-hidden="true">→</span></button>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
